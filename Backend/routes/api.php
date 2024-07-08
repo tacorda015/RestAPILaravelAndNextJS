@@ -33,5 +33,9 @@ Route::apiResource('products', ProductController::class);
 
 
 // * For OutputMonitoring Sample Data
+Route::post('output-monitorings/add', [OutputMonitoringController::class, 'store']);
 Route::get('output-monitorings/SMT', [OutputMonitoringController::class, 'getSMT']);
+Route::post('output-monitorings/add', [OutputMonitoringController::class, 'store']);
+Route::get('output-monitorings/SMT1-3', [OutputMonitoringController::class, 'getSMT1to3']);
+Route::get('output-monitorings/SMT4-6', [OutputMonitoringController::class, 'getSMT4to6']);
 Route::get('output-monitorings/DIP', [OutputMonitoringController::class, 'getDIP']);

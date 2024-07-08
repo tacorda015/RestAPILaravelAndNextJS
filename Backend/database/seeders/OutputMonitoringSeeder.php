@@ -16,12 +16,12 @@ class OutputMonitoringSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        $lineNames = ['SMT1', 'SMT2', 'SMT3', 'DIP1', 'DIP2', 'DIP3'];
+        $lineNames = ['SMT1', 'SMT2', 'SMT3', 'SMT4', 'SMT5', 'SMT6', 'DIP1', 'DIP2', 'DIP3', 'DIP4'];
         // $startDate = Carbon::create(2024, 7, 3, 0, 0, 0); // June 15, 2024
         // $endDate = Carbon::now();
-        $startDate = Carbon::create(2024, 7, 5, 6, 0, 0); // June 15, 2024
-        $endDate = Carbon::create(2024, 7, 5, 13, 30, 0);
-        $recordsToGenerate = 50;
+        $startDate = Carbon::create(2024, 7, 1, 6, 0, 0); // June 15, 2024
+        $endDate = Carbon::create(2024, 7, 8, 8, 30, 0);
+        $recordsToGenerate = 2000;
         $recordsGenerated = 0;
 
         while ($recordsGenerated < $recordsToGenerate) {

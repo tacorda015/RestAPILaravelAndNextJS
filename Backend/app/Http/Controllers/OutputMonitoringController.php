@@ -17,6 +17,27 @@ class OutputMonitoringController extends Controller
         ]);
     }
 
+    public function getSMT1to3()
+    {
+        // Fetch records where lineName is exactly "SMT 1", "SMT 2", or "SMT 3"
+        $smtRecords = OutputMonitoring::whereIn('lineName', ['SMT1', 'SMT2', 'SMT3'])->get();
+
+        return response()->json([
+            'data' => $smtRecords,
+        ]);
+    }
+
+    public function getSMT4to6()
+    {
+        // Fetch records where lineName is exactly "SMT 4", "SMT 5", or "SMT 6"
+        $smtRecords = OutputMonitoring::whereIn('lineName', ['SMT4', 'SMT5', 'SMT6'])->get();
+
+        return response()->json([
+            'data' => $smtRecords,
+        ]);
+    }
+
+
     public function getDIP()
     {
         // Fetch records where lineName contains "SMT"
@@ -25,6 +46,27 @@ class OutputMonitoringController extends Controller
         return response()->json([
             'data' => $smtRecords,
         ]);
+    }
+
+    public function store(Request $request)
+    {
+        try {
+            $request->validate([
+                'output' => 'required|numeric',
+                'lineName' => 'required|string',
+            ]);
+    
+            $output = OutputMonitoring::create([
+                'output' => $request->input('output'),
+                'lineName' => $request->input('lineName'),
+                'date' => now(), // Use Laravel's now() helper for current timestamp
+            ]);
+            
+            return response()->json($output, 201); // Return a success response with status code 201
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Internal Server Error'], 500); // Return a generic error message
+        }   
+        
     }
     /**
      * Display a listing of the resource.
@@ -45,10 +87,10 @@ class OutputMonitoringController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    // public function store(Request $request)
+    // {
+    //     //
+    // }
 
     /**
      * Display the specified resource.
